@@ -1,0 +1,21 @@
+{% trans_default_domain 'front_login' %}
+
+<div class="text-center">
+    <div id="connect-register">
+        <form action="{{ path('app_login') }}" method="post">
+            <div>
+                <label for="email" hidden>{{ 'email'|trans }}</label>
+                <input class="login-input" required="required" type="email" placeholder="{{ 'email'|trans }}" maxlength="50" id="email" name="_email"/>
+            </div>
+            <div>
+                <label for="password" hidden>{{ 'password'|trans }}</label>
+                <input class="login-input" required="required" type="password" placeholder="{{ 'password'|trans }}" id="password" name="_password"/>
+            </div>
+            <label for="_csrf_token" hidden>CSRF</label>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            <div>
+                <button class="confirm-button" type="submit">{{ 'login'|trans }}</button>
+            </div>
+        </form>
+    </div>
+</div>

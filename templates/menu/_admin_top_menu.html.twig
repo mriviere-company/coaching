@@ -1,0 +1,15 @@
+{% trans_default_domain 'front_menu' %}
+
+<div id="top-menu">
+    <div class="top-block">
+        <a class="btn-top-logo" href="{{ path('dashboard') }}">
+            <img alt="{{ 'alt-image'|trans({},'front_global') }}" src="{{ asset('img/logo-full.webp') }}">
+        </a>
+        admin
+    </div>
+    <div>
+        <a class="{% if app.request.attributes.get('_route') == 'modify' %}btn-sub-top-on{% else %}btn-sub-top{% endif %}" href="{{ path('modify') }}">{{ 'modify'|trans }}</a>
+        <a class="{% if app.request.attributes.get('_route') == 'dashboard' %}btn-sub-top-on{% else %}btn-sub-top{% endif %}" href="{{ path('dashboard') }}">{{ 'stats'|trans }}</a>
+        <a class="{% if app.request.attributes.get('_route') == 'newsletter' %}btn-sub-top-on{% else %}btn-sub-top{% endif %}" href="{{ path('newsletter') }}">{{ 'newsletter'|trans }}</a>
+    </div>
+</div>

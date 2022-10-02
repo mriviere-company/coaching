@@ -1,0 +1,28 @@
+{% trans_default_domain 'front_menu' %}
+
+<div class="burger">
+    <i class="fas fa-bars fa-2x"></i>
+    <i class="fas fa-times fa-2x"></i>
+</div>
+
+<nav class="my-navbar">
+    {% set paths = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth'] %}
+    {% set number = 0 %}
+    {% for menuInfo in menuInfos %}
+        {% if paths[number] == 'first' %}
+            <a class="btn-top-left" href="{{ path(paths[number], {'page':  menuInfo.name|slug|lower}) }}">{{ menuInfo.name }}</a>
+            <a class="btn-top-logo" href="{{ path('home') }}">
+                <img alt="{{ 'alt-image'|trans({},'front_global') }}" src="{{ asset('img/logo-full.webp') }}">
+            </a>
+        {% elseif paths[number] == 'second' %}
+            <a class="btn-top-right" href="{{ path(paths[number], {'page':  menuInfo.name|slug|lower}) }}">{{ menuInfo.name }}</a>
+        {% elseif paths[number] == 'third' %}
+            <ul class="nav-links">
+                <li class="nav-link"><a href="{{ path(paths[number], {'page':  menuInfo.name|slug|lower}) }}">{{ menuInfo.name }}</a></li>
+        {% else %}
+            <li class="nav-link"><a href="{{ path(paths[number], {'page':  menuInfo.name|slug|lower}) }}">{{ menuInfo.name }}</a></li>
+        {% endif %}
+        {% set number = number + 1 %}
+    {% endfor %}
+    </ul>
+</nav>

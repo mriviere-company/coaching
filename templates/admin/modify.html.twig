@@ -1,0 +1,17 @@
+{% extends 'admin/base.html.twig' %}
+
+{% trans_default_domain 'admin_dashboard' %}
+
+{% block title %}{{ 'title'|trans }}{% endblock %}
+
+{% block body %}
+
+    {% include 'menu/_top_menu_edit.html.twig' %}
+
+    {{ form_start(form_newPage) }}
+    {{ form_widget(form_newPage.name) }}
+    {{ form_widget(form_newPage.position) }}
+    {{ form_widget(form_newPage.sendForm) }}
+    {{ form_end(form_newPage) }}
+
+{% endblock %}

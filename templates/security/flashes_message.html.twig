@@ -1,0 +1,15 @@
+{% for message in app.flashes('fail') %}
+    <div class="flash-notice mt-5 alert-flash-error text-center">
+        {{ message }}
+    </div>
+{% endfor %}
+    {% for message in app.flashes('success') %}
+        <div class="flash-notice mt-5 alert-flash-success text-center">
+            {{ message }}
+        </div>
+{% endfor %}
+{% if error is defined and error %}
+    <div class="flash-notice mt-5 alert-flash-error text-center">
+        {{ error.messageKey|trans(error.messageData, 'security') }}
+    </div>
+{% endif %}

@@ -1,0 +1,14 @@
+{% extends 'admin/base.html.twig' %}
+
+{% trans_default_domain 'front_index' %}
+
+{% block title %}{{ 'title'|trans }}{% endblock %}
+
+{% block body %}
+    {% include 'security/flashes_message.html.twig' %}
+
+    {% if app.user is null %}
+        {% include 'security/login.html.twig' %}
+    {% endif %}
+
+{% endblock %}

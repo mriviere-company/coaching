@@ -1,0 +1,60 @@
+{% extends 'admin/base.html.twig' %}
+
+{% trans_default_domain 'admin_dashboard' %}
+
+{% block title %}{{ 'title'|trans }}{% endblock %}
+
+{% block body %}
+
+    <span class="ml-5">{{ ip }} {{ 'nbr.connect'|trans }}</span>
+    {% set referersTab = [] %}
+    {% set referersNbrTab = [] %}
+    {% set pagesTab = [] %}
+    {% set pagesNbrTab = [] %}
+    {% set uniquePagesTab = [] %}
+    {% set uniquePagesNbrTab = [] %}
+    {% set computersTab = [] %}
+    {% set computersNbrTab = [] %}
+    {% for computer in computers %}
+        {% if computer['computer'] != null %}
+            {% set computersTab = computersTab|merge([(computer['computer'])]) %}
+            {% set computersNbrTab = computersNbrTab|merge([(computer['nbrComputer'])]) %}
+        {% endif %}
+    {% endfor %}
+    {% for referer in referers %}
+        {% if referer['previousPage'] != null %}
+            {% set referersTab = referersTab|merge([(referer['previousPage'])]) %}
+            {% set referersNbrTab = referersNbrTab|merge([(referer['nbrPreviousPage'])]) %}
+        {% endif %}
+    {% endfor %}
+    {% for page in pages %}
+        {% if page['page'] != null %}
+            {% set pagesTab = pagesTab|merge([(page['page'])]) %}
+            {% set pagesNbrTab = pagesNbrTab|merge([(page['nbrPage'])]) %}
+        {% endif %}
+    {% endfor %}
+    {% for uniquePage in uniquePages %}
+        {% if uniquePage['uniquePage'] != null %}
+            {% set uniquePagesTab = uniquePagesTab|merge([(uniquePage['uniquePage'])]) %}
+            {% set uniquePagesNbrTab = uniquePagesNbrTab|merge([(uniquePage['nbrPage'])]) %}
+        {% endif %}
+    {% endfor %}
+    <div id="referersChart" data-referers-chart="{{ referersTab|json_encode }}"></div>
+    <div id="referersNbrChart" data-referers-nbr-chart="{{ referersNbrTab|json_encode }}"></div>
+    <div id="uniquePagesChart" data-unique-pages-chart="{{ uniquePagesTab|json_encode }}"></div>
+    <div id="uniquePagesNbrChart" data-unique-pages-nbr-chart="{{ uniquePagesNbrTab|json_encode }}"></div>
+    <div id="pagesChart" data-pages-chart="{{ pagesTab|json_encode }}"></div>
+    <div id="pagesNbrChart" data-pages-nbr-chart="{{ pagesNbrTab|json_encode }}"></div>
+    <div id="computersChart" data-computers-chart="{{ computersTab|json_encode }}"></div>
+    <div id="computersNbrChart" data-computers-nbr-chart="{{ computersNbrTab|json_encode }}"></div>
+    <h1 class="text-center text-bleu text-much-more">{{ 'subtitle.pages'|trans }}</h1>
+    <canvas class="mb-5" id="pageChart"></canvas>
+    <h1 class="text-center text-bleu text-much-more">{{ 'subtitle.uniquepages'|trans }}</h1>
+    <canvas class="mb-5" id="uniquePageChart"></canvas>
+    <h1 class="text-center text-bleu text-much-more">{{ 'subtitle.computer'|trans }}</h1>
+    <canvas class="mb-5" id="computerChart"></canvas>
+    <h1 class="text-center text-bleu text-much-more">{{ 'subtitle.referer'|trans }}</h1>
+    <canvas class="mb-5" id="refererChart"></canvas>
+    {{ encore_entry_script_tags('admin') }}
+
+{% endblock %}

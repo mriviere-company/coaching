@@ -1,0 +1,26 @@
+{% extends 'admin/base.html.twig' %}
+
+{% trans_default_domain 'admin_dashboard' %}
+
+{% block title %}{{ 'title'|trans }}{% endblock %}
+
+{% block body %}
+
+    {% include 'menu/_top_menu_edit.html.twig' %}
+
+    {{ form_start(form_newImage) }}
+    {{ form_widget(form_newImage.imageFile) }}
+    {{ form_widget(form_newImage.position) }}
+    {{ form_widget(form_newImage.sendForm) }}
+    {{ form_end(form_newImage) }}
+
+    <div class="image-block-edit">
+        {% for imageInfo in imageInfos %}
+            <img alt="{{ 'alt-image'|trans({},'front_global') }}" src="{{ asset('img/' ~ imageInfo.name) }}">
+            <span class="delete-image">
+                <a href="{{ path('delete_image', {'image': imageInfo.id}) }}"  data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.delete.image'|trans }}"><i class="fa-solid fa-xmark fa-10x"></i></a>
+            </span>
+        {% endfor %}
+    </div>
+
+{% endblock %}

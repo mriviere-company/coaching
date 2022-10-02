@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% trans_default_domain 'front_index' %}
+
+{% block title %}{{ 'title'|trans }}{% endblock %}
+
+{% block body %}
+
+    {% if is_mobile() %}
+        <a class="btn-mobile-logo" href="{{ path('home') }}">
+            <img alt="{{ 'alt-image'|trans({},'front_global') }}" src="{{ asset('img/logo-full.webp') }}">
+        </a>
+    {% endif  %}
+
+    <div class="image-block">
+        {% for imageInfo in imageInfos %}
+            <img alt="{{ 'alt-image'|trans({},'front_global') }}" src="{{ asset('img/' ~ imageInfo.name) }}">
+        {% endfor %}
+    </div>
+
+{% endblock %}

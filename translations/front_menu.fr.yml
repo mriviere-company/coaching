@@ -1,0 +1,15 @@
+coaching: "Le coaching ?"
+programs: "Mes programmes"
+pricing: "Les tarifs"
+who-am-i: "Qui suis-je ?"
+attestation: "Témoignages"
+contact: "Contacts"
+copyright: "Copyright © 2022"
+name: "Élodie Rivière"
+siret: "SIRET 918273533 00011"
+modify: 'Modifier mes pages'
+stats: 'Mes stats'
+newsletter: 'Envoyer mail'
+tooltip:
+  delete:
+    page: 'Supprimer la page'

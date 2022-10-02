@@ -1,0 +1,11 @@
+title: 'Mes stats'
+subtitle:
+  pages: 'Pages les plus consultées en tout'
+  uniquepages: 'Pages les plus consultées par utilisateurs différents'
+  computer: 'OS les plus utilisés'
+  referer: 'Provenance des utilisateurs'
+nbr:
+  connect: 'connexions unique'
+tooltip:
+  delete:
+    image: 'Supprimer image'

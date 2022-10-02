@@ -1,0 +1,6 @@
+form:
+  name: 'Nom'
+  position: 'Position'
+  newPage: 'Nouvelle page'
+  newImage: 'Nouvelle image'
+  imageFile: 'Image'

@@ -1,0 +1,10 @@
+{% trans_default_domain 'front_menu' %}
+
+<div class="footer">
+    {{ 'copyright'|trans }}
+    <a class="presentation" href="{{ path('first', {'page':  'qui-suis-je'}) }}">{{ 'name'|trans }}</a>
+    <a class="rss" href="https://www.facebook.com/lapassiondusuccess" rel="noopener noreferrer" target="_blank"><i class="fa-brands fa-facebook-f fa-lg pr-2"></i></a>
+    <a class="rss" href="mailto:lapassiondusuccess@gmail.com"><i class="fa-solid fa-envelope fa-lg pr-2"></i></a>
+    <a class="rss" href="tel:+33766304532"><i class="fa-solid fa-phone fa-lg pr-2"></i></a>
+    {{ 'siret'|trans }}
+</div>

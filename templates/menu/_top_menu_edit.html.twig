@@ -1,0 +1,13 @@
+{% trans_default_domain 'front_menu' %}
+
+<div id="top-menu">
+    <div class="top-block">
+        {% set paths = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth'] %}
+        {% for menuInfo in menuInfos %}
+            <span class="delete-image">
+                <a href="{{ path('delete_page', {'page': menuInfo.id}) }}"  data-toggle="tooltip" data-placement="top" title="{{ 'tooltip.delete.page'|trans }}"><i class="fa-solid fa-xmark fa-2x"></i></a>
+            </span>
+            <a class="{% if app.request.attributes.get('page') and app.request.attributes.get('page').getId() == menuInfo.id %}btn-sub-top-on-edit{% else %}btn-sub-top-edit{% endif %}" href="{{ path('edit_page', {'page': menuInfo.id}) }}">{{ menuInfo.name }} -{{ menuInfo.position }}</a>
+        {% endfor %}
+    </div>
+</div>

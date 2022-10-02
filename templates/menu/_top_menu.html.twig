@@ -1,0 +1,26 @@
+{% trans_default_domain 'front_menu' %}
+
+<div id="top-menu">
+    <div class="top-block">
+        {% set paths = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth'] %}
+        {% set number = 0 %}
+        {% for menuInfo in menuInfos %}
+            {% if paths[number] == 'first' %}
+                <div class="top-block">
+                    <a class="{% if app.request.attributes.get('_route') == paths[number] %}btn-top-left-on{% else %}btn-top-left{% endif %}" href="{{ path(paths[number], {'page':  menuInfo.name|slug|lower}) }}">{{ menuInfo.name }}</a>
+                    <a class="btn-top-logo" href="{{ path('home') }}">
+                        <img alt="{{ 'alt-image'|trans({},'front_global') }}" src="{{ asset('img/logo-full.webp') }}">
+                    </a>
+            {% elseif paths[number] == 'second' %}
+                    <a class="{% if app.request.attributes.get('_route') == paths[number] %}btn-top-right-on{% else %}btn-top-right{% endif %}" href="{{ path(paths[number], {'page':  menuInfo.name|slug|lower}) }}">{{ menuInfo.name }}</a>
+                </div>
+            {% elseif paths[number] == 'third' %}
+            <div>
+                <a class="{% if app.request.attributes.get('_route') == paths[number] %}btn-sub-top-on{% else %}btn-sub-top{% endif %}" href="{{ path(paths[number], {'page':  menuInfo.name|slug|lower}) }}">{{ menuInfo.name }}</a>
+            {% else %}
+                <a class="{% if app.request.attributes.get('_route') == paths[number] %}btn-sub-top-on{% else %}btn-sub-top{% endif %}" href="{{ path(paths[number], {'page':  menuInfo.name|slug|lower}) }}">{{ menuInfo.name }}</a>
+            {% endif %}
+            {% set number = number + 1 %}
+        {% endfor %}
+    </div>
+</div>
